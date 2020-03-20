@@ -9,7 +9,7 @@
  */
 
 // Plugin title, version
-$jr_fetchwitter_version = '0.0.1';
+$jr_fetchwitter_version = '0.0.2';
 
 // Define the default constants
 define('JR_FW_DIR', plugin_dir_path(__FILE__));

@@ -4,11 +4,11 @@
  * Plugin Name: Fetchwitter for WordPress
  * Plugin URI: http://github.com/jabranr/fetchwitter-wordpress-plugin
  * Description: Get Tweets from Twitter API v1.1 for a user timeline, for a hashtag or for any search query. To use, active the plugin and in plugin settings page, enter API Key and API Secret by creating an app at <a href="https://apps.twitter.com" target="_blank">Twitter Apps</a>. This plugin extends functionality of <a href="http://j.mp/fetchwitter" target="_blank">Fetchwitter PHP Class</a> for WordPress.
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: Jabran Rafique
- * Author URI: hello@jabran.me
+ * Author URI: https://jabran.me?utm_source=fetchwitter-wordpress-plugin
  * License: MIT License
- 
+
  Copyright (c) 2014 Jabran Rafique
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
