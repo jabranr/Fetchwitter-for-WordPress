@@ -2,10 +2,10 @@
 Contributors: jabranr
 Donate link: https://paypal.me/jabranr
 Tags: twitter, api, auth, oauth
-Requires at least: 3.0
-Tested up to: 3.0
-Stable tag: 0.0.2
-Requires PHP: 5.2.4
+Requires at least: 5.0
+Tested up to: 5.3.2
+Stable tag: 1.0.0
+Requires PHP: 5.3
 License: MIT License
 License URI: https://opensource.org/licenses/MIT
 
@@ -28,8 +28,5 @@ This section describes how to install the plugin and get it working.
 
 == Changelog ==
 
-= 0.0.2 =
-* Minor updates
-
-= 0.0.1 =
+= 1.0.0 =
 * First version launched
