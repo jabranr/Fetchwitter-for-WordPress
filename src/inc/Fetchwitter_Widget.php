@@ -9,7 +9,7 @@
  */
 
 class Fetchwitter_Widget extends WP_Widget {
-	
+
 	public function __construct() {
 		parent::__construct( 'jr_fetchwitter_widget', 'Fetchwitter Widget', array( 'description' => __('Fetch Tweets from a Twitter user timeline or by searching any term i.e. a hashtag.') ) );
 	}
@@ -19,7 +19,7 @@ class Fetchwitter_Widget extends WP_Widget {
 		if ( is_active_widget(false, false, 'jr_fetchwitter_widget', true) ) {
 
 			$title = apply_filters( 'widget_title', $instance['title'] );
-			
+
 			echo $args['before_widget'];
 
 			if ( ! empty($title) )
@@ -28,37 +28,48 @@ class Fetchwitter_Widget extends WP_Widget {
 			$jr_fetchwitter_widget_options = get_option( JR_FW_OPTIONS );
 
 			if ( $jr_fetchwitter_widget_options !== false ) {
-			
+
 				$config = array(
 					'api_key' => $jr_fetchwitter_widget_options['jr_fetchwitter_api_key'],
 					'api_secret' => $jr_fetchwitter_widget_options['jr_fetchwitter_api_secret'],
 				);
 
+                $tweets = null;
+
 				try {
-					$fetchwitter = new Fetchwitter( $config );
-					$fetchwitter->set_access_token($jr_fetchwitter_widget_options['jr_fetchwitter_api_access_key']);
+					$fetchwitter = new Fetchwitter($config);
+                    $fetchwitter->set_access_token($jr_fetchwitter_widget_options['jr_fetchwitter_api_access_key']);
+                    $tweets = $fetchwitter->get_by_user($instance['username'], absint($instance['tweets']));
 				} catch (Exception $e) {
-					// echo $e->getMessage();
+					// do nothing
 				}
 
-				if ( $fetchwitter ) {
-					$tweets = $fetchwitter->get_by_user($instance['username'], absint($instance['tweets']));
-					$tweets = json_decode($tweets);
-					if ( $tweets ) {
+				if ($tweets) {
+                    $tweets = json_decode($tweets);
+
+                    if ($tweets) {
+                        echo '<ul class="fetchwitter-tweets">';
 						foreach ($tweets as $tweet) {
-							echo '<ul>';
-							if ( checked($instance['formatted_tweet'], 'on', false) )
-								echo '<li>' . $fetchwitter->to_tweet($tweet->text) . '</li>';
-							else
-								echo '<li>' . $tweet->text . '</li>';
-							echo '</ul>';
+                            $tweetText = __($tweet->text);
+
+							if ( isset($instance['formatted_tweet']) && checked($instance['formatted_tweet'], 'on', false) ) {
+                                printf('<li>%s</li>', $fetchwitter->to_tweet($tweetText));
+                            } else {
+                                printf('<li>%s</li>', $tweetText);
+                            }
 						}
+                        echo '</ul>';
 					}
 				}
 			}
 
-			if ( isset($instance['username']) && ! empty($instance['username']) )
-				echo '<p class="jr-fetchwitter-footer"><small><a href="https://twitter.com/intent/follow?screen_name=' . $instance['username'] . '" target="_blank">Follow ' . $instance['username'] . '</small></a></p>';
+			if ( isset($instance['username']) && ! empty($instance['username']) ) {
+                printf(
+                    '<p class="jr-fetchwitter-footer"><a href="https://twitter.com/intent/follow?screen_name=%s" target="_blank" rel="noopener">Follow @%s</a></p>',
+                    __($instance['username']),
+                    __($instance['username'])
+                );
+            }
 
 			echo $args['after_widget'];
 		}
@@ -66,9 +77,9 @@ class Fetchwitter_Widget extends WP_Widget {
 
 	public function form( $instance ) {
 		$options = get_option( JR_FW_OPTIONS );
-		if ( $options && 
+		if ( $options &&
 			isset($options['jr_fetchwitter_api_key']) && $options['jr_fetchwitter_api_key'] &&
-			isset($options['jr_fetchwitter_api_secret']) && $options['jr_fetchwitter_api_secret'] && 
+			isset($options['jr_fetchwitter_api_secret']) && $options['jr_fetchwitter_api_secret'] &&
 			isset($options['jr_fetchwitter_api_access_key']) && $options['jr_fetchwitter_api_access_key'] ) {
 			$info['title'] = isset($instance['title']) ? $instance['title'] : __('Tweets');
 			$info['username'] = isset($instance['username']) ? $instance['username'] : __('jabranr');

@@ -10,7 +10,7 @@ echo "- Clean up SVN";
 rm -rf fetchwitter
 
 echo "- Checkout from SVN remote";
-svn co http://plugins.svn.wordpress.org/fetchwitter/
+svn co http://plugins.svn.wordpress.org/fetchwitter/ svn
 
 echo "- Clean up SVN trunk";
 rm -rf fetchwitter/trunk/*

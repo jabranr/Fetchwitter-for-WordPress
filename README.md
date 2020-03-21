@@ -1,7 +1,5 @@
 # Fetchwitter for WordPress
 
-**Version: 0.0.2**
-
 WordPress plugin for Fetchwitter PHP Library to fetch the Tweets from a Twitter user timeline.
 
 # Use
@@ -12,7 +10,7 @@ WordPress plugin for Fetchwitter PHP Library to fetch the Tweets from a Twitter 
 - Go to plugin settings page and enter the API Key and Secret and save changes.
 - Upon getting a successful Access Token, go to Widgets page and setup a widget to required location with desired settings.
 
-**Issues:** Report the issues at [http://j.mp/fetchwitter-wp-issues](http://j.mp/fetchwitter-wp-issues)
+**Issues:** Report any issues at https://github.com/jabranr/fetchwitter-for-wordpress/issues
 
 # License
 

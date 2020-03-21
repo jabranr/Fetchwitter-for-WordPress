@@ -44,3 +44,13 @@ register_deactivation_hook( __FILE__, 'deactivate_fetchwitter_plugin' );
 // Load plugin setup and defaults
 add_action('plugins_loaded', 'jr_fetchwitter_setup', 100);
 add_action('widgets_init', 'register_jr_fetchwitter_widget');
+add_filter('plugin_action_links_'. plugin_basename(__FILE__), 'jr_fetchwitter_settings_link', 100, 3);
+
+/**
+ * Add settings link
+ */
+function jr_fetchwitter_settings_link( $links ) {
+    $links[] = sprintf('<a href="%s">%s</a>', admin_url('widgets.php'), __('Widget'));
+    $links[] = sprintf('<a href="%s">%s</a>', admin_url('plugins.php?page=fetchwitter-for-wordpress'), __('Settings'));
+	return $links;
+}

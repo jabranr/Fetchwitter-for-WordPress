@@ -60,7 +60,7 @@ if ( ! function_exists('get_jr_fetchwitter_plugin_options') ) {
 
 if ( ! function_exists('jr_fetchwitter_setup') ) {
 	function jr_fetchwitter_setup() {
-		
+
 		// Setup settings panel in dashboard
 		add_action('admin_menu', 'jr_fetchwitter_admin_setup');
 
@@ -76,7 +76,7 @@ if ( ! function_exists('jr_fetchwitter_setup') ) {
 
 if ( ! function_exists('jr_fetchwitter_admin_setup') ) {
 	function jr_fetchwitter_admin_setup() {
-		add_options_page('Fetchwitter', 'Fetchwitter', 'manage_options', 'fetchwitter-for-wordpress', 'fetchwitter_setting_page');
+		add_plugins_page('Fetchwitter', 'Fetchwitter', 'manage_options', 'fetchwitter-for-wordpress', 'fetchwitter_setting_page');
 	}
 }
 

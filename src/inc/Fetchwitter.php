@@ -20,7 +20,7 @@ class Fetchwitter {
 			$_count;
 
 	public function __construct( $config = array() ) {
-		
+
 		if ( !isset( $config ) || ! count( $config ) )
 			throw new Exception('Error 100: Configurations not found.');
 
@@ -88,7 +88,7 @@ class Fetchwitter {
 				$curl_options[CURLOPT_URL] = $endpoint . $options['query'];
 			}
 		}
-		
+
 		if ( $response = $this->_do_curl( $curl_options ) )
 			return $response;
 		return false;
@@ -101,7 +101,7 @@ class Fetchwitter {
 	public function tweet_length( $tweet ) {
 		return strlen( $tweet );
 	}
-	
+
 	public function __destruct() {
 		return true;
 	}
@@ -116,7 +116,7 @@ class Fetchwitter {
 				'grant_type' => 'client_credentials'
 			),
 			CURLOPT_HTTPHEADER => array(
-				'Authorization: Basic ' . base64_encode( $this->_api_key . ':' . $this->_api_secret ) 
+				'Authorization: Basic ' . base64_encode( $this->_api_key . ':' . $this->_api_secret )
 			),
 			CURLOPT_HEADER => false,
 			CURLOPT_URL => $this->_api_url . $this->_app_oauth_endpoint,
@@ -133,7 +133,7 @@ class Fetchwitter {
 	}
 
 	private function _set_access_token() {
-		if ( empty( $this->_access_token ) ) 
+		if ( empty( $this->_access_token ) )
 			return $this->_access_token = $this->_get_access_token();
 		return true;
 	}
