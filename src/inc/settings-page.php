@@ -8,9 +8,12 @@
  *
  */
 
+if (!defined(JR_FW_DIR)) exit;
+
 if (
     isset($_POST['jr_fetchwitter_wp_nonce']) &&
-    wp_verify_nonce($_POST['jr_fetchwitter_wp_nonce'], 'update-api-info')
+    wp_verify_nonce($_POST['jr_fetchwitter_wp_nonce'], 'update-api-info') &&
+    current_user_can('manage_options')
 ) {
     if (isset($_POST['jr_fetchwitter_api_key']) && isset($_POST['jr_fetchwitter_api_secret']) ) {
         $api_key = sanitize_text_field($_POST['jr_fetchwitter_api_key']);

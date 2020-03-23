@@ -30,6 +30,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
   */
 
+// Define the default constants
+define('JR_FW_DIR', plugin_dir_path(__FILE__));
+define('JR_FW_INC_DIR', JR_FW_DIR . 'inc');
+define('JR_FW_LIB_DIR', JR_FW_DIR . 'lib');
+define('JR_FW_OPTIONS', 'jr_fetchwitter_plugin_options');
+
 // Include common settings
 require_once( 'settings.php' );
 

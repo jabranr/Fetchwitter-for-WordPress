@@ -8,6 +8,8 @@
  *
  */
 
+if (!defined(JR_FW_DIR)) exit;
+
 
 /**
  * Activates the Fetchwitter plugin
