@@ -8,7 +8,7 @@
  *
  */
 
-if (!defined(JR_FW_DIR)) exit;
+if (!defined('JR_FW_DIR')) exit;
 
 
 /**
